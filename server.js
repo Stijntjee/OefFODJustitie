@@ -45,7 +45,7 @@ const credentials = {
 };
 
 const opts = {
-  key: fs.readFileSync("/home/stijn/keys/private_data.key"),
+  key: fs.readFileSync("/home/stijn/keys/private.key"),
   cert: fs.readFileSync("/home/stijn/keys/ss_cert.crt"),
   requestCert: true,
   rejectUnauthorized: false,
