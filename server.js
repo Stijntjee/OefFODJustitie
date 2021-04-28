@@ -4,7 +4,6 @@ const path = require("path");
 const cors = require("cors");
 
 const fs = require("fs");
-const http = require("http");
 const https = require("https");
 
 const app = express();
@@ -19,30 +18,6 @@ app.use(express.json());
 
 app.use("/public", publicRouter);
 app.use("/protected", protectedRouter);
-
-const httpServer = http.createServer(app);
-
-httpServer.listen(2000, () => {
-  console.log("HTTP Server running on port " + 2000);
-});
-
-const privateKey = fs.readFileSync(
-  "/home/stijn/keys/data/private_data.key",
-  "utf8"
-);
-const certificate = fs.readFileSync(
-  "/home/stijn/keys/data/ss_cert_data.crt",
-  "utf8"
-);
-/*const ca = fs.readFileSync(
-    "/etc/letsencrypt/live/litwick.be/chain.pem",
-    "utf8"
-  );*/
-
-const credentials = {
-  key: privateKey,
-  cert: certificate,
-};
 
 const opts = {
   key: fs.readFileSync("/home/stijn/keys/privatekey.key"),

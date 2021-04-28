@@ -1,0 +1,12 @@
+#CREATE PRIVATE KET AND SELF SIGNED CERT
+openssl req -x509 -nodes -days 365 -newkey rsa:2048 -keyout privatekey.key -out ss_cert.crt
+
+
+#CREATE CLIENT KEY AND CERT SIGN REQ
+openssl req -newkey rsa:4096 -keyout pdata01.key -out pdata01.csr -nodes -subj "/CN=client01.local"
+
+#SIGN CLIENT CERT
+openssl x509 -req -in pdata01.csr -CA ss_cert.crt -CAkey privatekey.key -out cert_pdata01.crt -set_serial 01 -days 365
+
+#(OPTIONAL) CONVERT TO P12
+openssl pkcs12 -export -clcerts -in cert_pdata02.crt -inkey pdata01.key -out pdata01.p12
