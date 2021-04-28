@@ -27,7 +27,7 @@ function validateCertificateClientTwo(req, res, nex) {
     nex();
   } else if (cert.subject) {
     res
-      .sendStatus(403)
+      .status(403)
       .send(
         "Sorry ${cert.subject.CN}, certificates from ${cert.issuer.CN} are not welcome here."
       );
