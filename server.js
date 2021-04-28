@@ -26,26 +26,25 @@ httpServer.listen(port, () => {
   console.log("HTTP Server running on port " + port);
 });
 
-/*
-  const privateKey = fs.readFileSync(
-    "/etc/letsencrypt/live/litwick.be/privkey.pem",
-    "utf8"
-  );
-  const certificate = fs.readFileSync(
-    "/etc/letsencrypt/live/litwick.be/cert.pem",
-    "utf8"
-  );
-  const ca = fs.readFileSync(
+const privateKey = fs.readFileSync(
+  "/home/stijn/keys/data/private_data.key",
+  "utf8"
+);
+const certificate = fs.readFileSync(
+  "/home/stijn/keys/data/ss_cert_data.crt",
+  "utf8"
+);
+/*const ca = fs.readFileSync(
     "/etc/letsencrypt/live/litwick.be/chain.pem",
     "utf8"
-  );
-  
-  const credentials = {
-    key: privateKey,
-    cert: certificate,
-    ca: ca,
-  };
-  const httpsServer = https.createServer(credentials, app);
-  httpsServer.listen(port, () => {
-    console.log("HTTPS Server running on port 4000");
-  });*/
+  );*/
+
+const credentials = {
+  key: privateKey,
+  cert: certificate,
+};
+
+const httpsServer = https.createServer(credentials, app);
+httpsServer.listen(port, () => {
+  console.log("HTTPS Server running on port 4000");
+});
