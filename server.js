@@ -44,7 +44,15 @@ const credentials = {
   cert: certificate,
 };
 
-const httpsServer = https.createServer(credentials, app);
+const httpsServer = https.createServer(opts, app);
 httpsServer.listen(port, () => {
   console.log("HTTPS Server running on port " + port);
 });
+
+const opts = {
+  key: fs.readFileSync("/home/stijn/keys/data/private_data.key"),
+  cert: fs.readFileSync("/home/stijn/keys/data/ss_cert_data.crt"),
+  requestCert: true,
+  rejectUnauthorized: false,
+  ca: [fs.readFileSync("/home/stijn/keys/data/ss_cert_data.crt")],
+};
