@@ -29,7 +29,11 @@ function validateCertificateClientTwo(req, res, nex) {
     res
       .status(403)
       .send(
-        "Sorry ${cert.subject.CN}, certificates from ${cert.issuer.CN} are not welcome here."
+        "Sorry  " +
+          cert.subject.CN +
+          ", certificates from " +
+          cert.issuer.CN +
+          " are not welcome here."
       );
   } else {
     res
@@ -45,9 +49,13 @@ function validateCertificateClientOne(req, res, nex) {
     nex();
   } else if (cert.subject) {
     res
-      .sendStatus(403)
+      .status(403)
       .send(
-        "Sorry ${cert.subject.CN}, certificates from ${cert.issuer.CN} are not welcome here."
+        "Sorry  " +
+          cert.subject.CN +
+          ", certificates from " +
+          cert.issuer.CN +
+          " are not welcome here."
       );
   } else {
     res
