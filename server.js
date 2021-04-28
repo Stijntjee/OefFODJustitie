@@ -45,11 +45,11 @@ const credentials = {
 };
 
 const opts = {
-  key: fs.readFileSync("/home/stijn/keys/data/private_data.key"),
-  cert: fs.readFileSync("/home/stijn/keys/data/ss_cert_data.crt"),
+  key: fs.readFileSync("/home/stijn/keys/private_data.key"),
+  cert: fs.readFileSync("/home/stijn/keys/ss_cert.crt"),
   requestCert: true,
   rejectUnauthorized: false,
-  ca: [fs.readFileSync("/home/stijn/keys/data/ss_cert_data.crt")],
+  ca: [fs.readFileSync("/home/stijn/keys/ss_cert.crt")],
 };
 
 const httpsServer = https.createServer(opts, app);
