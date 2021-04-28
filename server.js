@@ -22,8 +22,8 @@ app.use("/protected", protectedRouter);
 
 const httpServer = http.createServer(app);
 
-httpServer.listen(port, () => {
-  console.log("HTTP Server running on port " + port);
+httpServer.listen(2000, () => {
+  console.log("HTTP Server running on port " + 2000);
 });
 
 const privateKey = fs.readFileSync(
@@ -46,5 +46,5 @@ const credentials = {
 
 const httpsServer = https.createServer(credentials, app);
 httpsServer.listen(port, () => {
-  console.log("HTTPS Server running on port 4000");
+  console.log("HTTPS Server running on port " + port);
 });
