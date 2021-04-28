@@ -5,11 +5,11 @@ const path = require("path");
 const router = express.Router();
 
 const opts = {
-  key: fs.readFileSync("/home/stijn/keys/data/private_data.key"),
-  cert: fs.readFileSync("/home/stijn/keys/data/ss_cert_data.crt"),
+  key: fs.readFileSync("/home/stijn/keys/private.key"),
+  cert: fs.readFileSync("/home/stijn/keys/ss_cert_data.crt"),
   requestCert: true,
   rejectUnauthorized: false,
-  ca: [fs.readFileSync("/home/stijn/keys/data/ss_cert_data.crt")],
+  ca: [fs.readFileSync("/home/stijn/keys/ss_cert_data.crt")],
 };
 
 router.get("/pdata1.json", validateCertificateClientOne, (req, res) => {
